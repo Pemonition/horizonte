@@ -1,0 +1,26 @@
+import { Component, computed, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { JournalStore } from './journal.store';
+import { Stat } from './components';
+@Component({selector:'app-diary',imports:[RouterLink,DatePipe,Stat,FormsModule],template:`
+ <p class="eyebrow mb-5">OBSERVAR TAMBÉM É EXPLORAR</p><h1>Seu diário de bordo.</h1><p class="mt-6 max-w-2xl leading-7 text-muted">Uma imagem, uma pergunta, uma nova perspectiva. Registre o que você descobriu e construa sua própria jornada.</p>
+ <div class="my-8 grid max-w-xl grid-cols-2 gap-4"><app-stat label="observações registradas" [value]="store.entryCount()"/><app-stat label="descobertas observadas" [value]="store.observedCount()"/></div>
+ <div class="grid items-start gap-10 lg:grid-cols-2"><section class="rounded-2xl border border-white/10 bg-panel p-6 md:p-8"><h2>Nova observação</h2>
+ @if(!store.savedCount()){<p class="mt-5 leading-7 text-muted">Primeiro, salve uma descoberta na sua coleção para vinculá-la a uma observação.</p><a routerLink="/explorar" class="primary mt-6">Encontrar uma descoberta</a>}
+ @else{<form #journalForm="ngForm" (ngSubmit)="save($event)" class="mt-6 space-y-5">
+ <label class="block"><span id="title-label" class="mb-2 block text-sm">Título</span><input required minlength="3" maxlength="80" class="field" name="title" [ngModel]="title()" (ngModelChange)="title.set($event);success.set('')" aria-labelledby="title-label" placeholder="O que mudou no seu olhar?" aria-describedby="title-hint"><span id="title-hint" class="mt-2 block text-xs text-muted">De 3 a 80 caracteres, sem contar espaços nas pontas.</span></label>
+ <label class="block"><span class="mb-2 block text-sm">Descoberta vinculada</span><select #discoverySelect required class="field" name="discovery" [ngModel]="selected()" (ngModelChange)="selected.set($event);success.set('')"><option value="">Selecione uma imagem salva</option>@for(item of store.saved();track item.id){<option [value]="item.id">{{item.title}}</option>}</select></label>
+ <label class="block"><span id="body-label" class="mb-2 block text-sm">Sua observação</span><textarea #observationInput required minlength="10" maxlength="1500" rows="5" class="field resize-y" name="body" [ngModel]="body()" (ngModelChange)="body.set($event);success.set('')" aria-labelledby="body-label" placeholder="Descreva um detalhe, uma sensação ou uma pergunta…" aria-describedby="body-hint"></textarea><span id="body-hint" class="mt-2 block text-xs text-muted">{{body().trim().length}} / 1500 caracteres · mínimo de 10</span></label>
+ <p class="text-sm text-muted">{{validation()}}</p><button class="primary w-full" [disabled]="!valid() || journalForm.invalid">Registrar observação ↗</button>
+ </form>}
+ @if(success()){<p role="status" class="mt-5 text-success">{{success()}}</p>}</section>
+ <section><h2 class="mb-6">O caminho até aqui</h2><div class="space-y-5">@for(entry of store.entries();track entry.id){<article class="rounded-2xl border border-white/10 p-6"><p class="eyebrow">{{entry.createdAt|date:'dd/MM/yyyy · HH:mm'}}</p><h3 class="mt-3 break-words text-xl font-bold">{{entry.title}}</h3><p class="mt-4 whitespace-pre-wrap break-words leading-7 text-muted">{{entry.body}}</p><a [routerLink]="['/descoberta',entry.discoveryId]" class="mt-5 block break-words text-sm text-accent">{{entry.discoveryTitle}} ↗</a><button class="mt-5 text-xs text-muted underline hover:text-danger" (click)="pendingDelete.set(entry.id)">Excluir observação</button>@if(pendingDelete()===entry.id){<div class="mt-3 flex flex-wrap items-center gap-4 rounded-xl bg-panel p-4"><span class="text-sm">Excluir este registro?</span><button class="text-sm text-danger" (click)="store.remove(entry.id);pendingDelete.set('')">Confirmar exclusão</button><button class="text-sm" (click)="pendingDelete.set('')">Cancelar</button></div>}</article>}@empty{<p class="rounded-2xl border border-dashed border-white/20 p-10 leading-7 text-muted">Toda jornada começa com uma primeira anotação. A sua aparece aqui.</p>}</div></section></div>`})
+export class Diary {
+ readonly store=inject(JournalStore);readonly title=signal('');readonly body=signal('');readonly selected=signal('');readonly success=signal('');readonly pendingDelete=signal('');
+ readonly discovery=computed(()=>this.store.saved().find(item=>item.id===this.selected()));
+ readonly validation=computed(()=>{if(this.title().trim().length<3||this.title().trim().length>80)return 'Preencha um título entre 3 e 80 caracteres.';if(!this.discovery())return 'Selecione uma descoberta da coleção.';if(this.body().trim().length<10||this.body().trim().length>1500)return 'Escreva uma observação entre 10 e 1500 caracteres.';return 'Tudo pronto para registrar.';});
+ readonly valid=computed(()=>this.title().trim().length>=3&&this.title().trim().length<=80&&this.body().trim().length>=10&&this.body().trim().length<=1500&&!!this.discovery());
+ save(event:Event){event.preventDefault();const item=this.discovery();if(!this.valid()||!item)return;if(this.store.add(this.title(),this.body(),item)){this.title.set('');this.body.set('');this.selected.set('');this.success.set('Observação registrada no diário.');}}
+}

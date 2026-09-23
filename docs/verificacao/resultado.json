@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "API simulada para fluxos determinísticos",
+    "menu ativo",
+    "salvar",
+    "filtrar",
+    "detalhe e recarga",
+    "formulário",
+    "persistência",
+    "exclusão",
+    "mobile 390px sem overflow",
+    "404",
+    "erro e retry",
+    "busca vazia",
+    "ID inexistente"
+  ],
+  "pageErrors": []
+}
