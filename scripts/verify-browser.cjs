@@ -13,7 +13,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
  await page.getByPlaceholder('Título ou centro de pesquisa').fill('');
  await page.locator('app-discovery-card').first().getByRole('link',{name:/Ver descoberta/}).click();
  await page.getByRole('link',{name:/Ver fonte e créditos/}).waitFor();await page.reload();await page.getByRole('link',{name:/Ver fonte e créditos/}).waitFor();
- await page.getByRole('link',{name:'Diário',exact:true}).click();await page.getByRole('heading',{name:'Nova observação'}).waitFor();const submit=page.getByRole('button',{name:/Registrar observação/});assert(await submit.isDisabled());
+ await page.goto(base+'/diario');await page.getByRole('heading',{name:'Nova observação'}).waitFor();const submit=page.getByRole('button',{name:/Registrar observação/});assert(await submit.isDisabled());
  await page.getByLabel('Título',{exact:true}).fill('Meu primeiro horizonte');await page.getByLabel('Descoberta vinculada').selectOption({index:1});await page.getByLabel('Sua observação',{exact:true}).fill('A escala do espaço muda a maneira como vejo nossa casa.');assert(await submit.isEnabled());await submit.click();await page.getByRole('heading',{name:'Meu primeiro horizonte'}).waitFor();
  await page.reload();await page.getByRole('heading',{name:'Meu primeiro horizonte'}).waitFor();
  await page.screenshot({path:path.join(out,'diario.png'),fullPage:true});

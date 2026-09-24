@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "languages": 7,
+  "checks": [
+    "empty collection",
+    "preselected inspiration",
+    "contact validation",
+    "seven languages and mobile",
+    "draft persistence",
+    "text download",
+    "delete confirmation",
+    "legacy notes preserved"
+  ],
+  "pageErrors": []
+}

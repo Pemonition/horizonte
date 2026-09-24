@@ -1,5 +1,13 @@
 # Validação - 23/09/2026
 
+## Pedidos de obras personalizadas
+
+- Build aprovado: 450,38 kB de JavaScript/CSS inicial; estimativa comprimida de 109,91 kB.
+- 17 testes unitários aprovados. Cobertura adicional: validação de contato e opções, limites da descrição, persistência de snapshots, remoção, armazenamento corrompido e indisponível.
+- Navegador: coleção vazia, imagem pré-selecionada a partir do detalhe, validação, troca dos sete idiomas preservando os campos, layout de 390 px, recarga de rascunhos, download de texto, exclusão confirmada e acesso às notas antigas.
+- Nenhum pedido é enviado: o recurso salva rascunhos no navegador e permite baixar um arquivo de texto. Não há cobrança nem reserva.
+- Evidências com dados fictícios: `verificacao/encomenda.json`, `encomenda-desktop.png` e `encomenda-mobile.png`. Script: `scripts/verify-commission.cjs`.
+
 ## Atualização multilíngue
 
 - Comparação com `origin/main`: o commit remoto `c9eba8d96989a5fc7413cf29b140adbd8f26c639` já estava presente localmente. Não houve alterações remotas divergentes ou conflitos; a interface multilíngue foi integrada sobre essa base.

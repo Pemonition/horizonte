@@ -1,0 +1,59 @@
+<p class="eyebrow mb-5">{{ 'commission.eyebrow' | t }}</p>
+<h1>{{ 'commission.title' | t }}</h1>
+<p class="mt-6 max-w-2xl leading-7 text-muted">{{ 'commission.intro' | t }}</p>
+<p class="my-8 rounded-2xl border border-accent/30 bg-panel p-5 text-sm leading-6" id="draft-notice">{{ 'commission.notice' | t }}</p>
+
+<div class="grid items-start gap-8 lg:grid-cols-2">
+ <section class="min-w-0 rounded-2xl border border-white/10 bg-panel p-6 md:p-8">
+  <h2>{{ 'commission.formTitle' | t }}</h2>
+  @if(!collection.savedCount()){
+   <p class="mt-5 leading-7 text-muted">{{ 'commission.emptyCollection' | t }}</p>
+   <a routerLink="/explorar" class="primary mt-6">{{ 'Encontrar uma descoberta' | t }}</a>
+  }@else{
+   <form #briefForm="ngForm" (ngSubmit)="save($event)" (input)="success.set(false)" (change)="success.set(false)" aria-describedby="draft-notice" class="mt-6 space-y-5">
+    <label class="block"><span class="mb-2 block text-sm">{{ 'commission.image' | t }}</span>
+     <select name="inspiration" class="field" required [ngModel]="selectedId()" (ngModelChange)="selected.set($event)">
+      <option value="">{{ 'Selecione uma imagem salva' | t }}</option>
+      @for(item of collection.saved();track item.id){<option [value]="item.id">{{item.title}}</option>}
+     </select>
+    </label>
+    @if(discovery();as image){<a [routerLink]="['/descoberta',image.id]" class="flex items-center gap-4 rounded-xl border border-white/10 p-3"><span class="min-w-0 break-words text-sm text-accent">{{image.title}} ↗</span></a>}
+    <label class="block"><span class="mb-2 block text-sm">{{ 'commission.name' | t }}</span><input name="name" class="field" required minlength="2" maxlength="80" autocomplete="name" [ngModel]="name()" (ngModelChange)="name.set($event)"></label>
+    <label class="block"><span class="mb-2 block text-sm">{{ 'commission.email' | t }}</span><input name="email" class="field" type="email" email required maxlength="254" autocomplete="email" [ngModel]="email()" (ngModelChange)="email.set($event)"></label>
+    <div class="grid gap-5 sm:grid-cols-2">
+     <label class="block min-w-0"><span class="mb-2 block text-sm">{{ 'commission.size' | t }}</span><select name="size" class="field" required [ngModel]="size()" (ngModelChange)="size.set($event)"><option value="">{{ 'commission.choose' | t }}</option>@for(option of sizes;track option){<option [value]="option">{{option}} cm</option>}</select></label>
+     <label class="block min-w-0"><span class="mb-2 block text-sm">{{ 'commission.style' | t }}</span><select name="style" class="field" required [ngModel]="style()" (ngModelChange)="style.set($event)"><option value="">{{ 'commission.choose' | t }}</option>@for(option of styles;track option){<option [value]="option">{{ 'commission.style.'+option | t }}</option>}</select></label>
+    </div>
+    <label class="block"><span id="description-label" class="mb-2 block text-sm">{{ 'commission.description' | t }}</span><textarea name="description" class="field resize-y" rows="5" required minlength="20" maxlength="1500" aria-labelledby="description-label" aria-describedby="description-help" [ngModel]="description()" (ngModelChange)="description.set($event)" [placeholder]="'commission.placeholder' | t"></textarea></label>
+    <p id="description-help" class="text-xs text-muted">{{ 'commission.characters' | t:{count:description().trim().length} }}</p>
+    <p class="text-sm text-muted">{{ 'commission.privacy' | t }}</p>
+    <p class="text-sm" aria-live="polite">{{ (error() || 'commission.ready') | t }}</p>
+    <button class="primary w-full" [disabled]="!valid() || briefForm.invalid">{{ 'commission.save' | t }}</button>
+   </form>
+  }
+  @if(success()){<p role="status" class="mt-5 text-success">{{ 'commission.success' | t }}</p>}
+  @if(orders.storageError()){<p role="alert" class="mt-5 text-danger">{{ 'commission.storageError' | t }}</p>}
+ </section>
+ <section class="min-w-0">
+  <p class="eyebrow mb-3">{{ 'commission.preview' | t }}</p>
+  <h2>{{ 'commission.summary' | t }}</h2>
+  <dl class="my-6 space-y-4 rounded-2xl border border-white/10 p-6">
+   <div><dt class="text-xs text-muted">{{ 'commission.image' | t }}</dt><dd class="mt-1 break-words">{{ discovery()?.title || ('commission.notSelected' | t) }}</dd></div>
+   <div><dt class="text-xs text-muted">{{ 'commission.size' | t }}</dt><dd>{{ size() ? size()+' cm' : ('commission.notSelected' | t) }}</dd></div>
+   <div><dt class="text-xs text-muted">{{ 'commission.style' | t }}</dt><dd>{{ style() ? ('commission.style.'+style() | t) : ('commission.notSelected' | t) }}</dd></div>
+  </dl>
+  <h2 class="mb-5">{{ 'commission.drafts' | t }} <span class="text-muted">({{orders.count()}})</span></h2>
+  <div class="space-y-5">@for(draft of orders.drafts();track draft.id){
+   <article class="rounded-2xl border border-white/10 p-6">
+    <p class="eyebrow">{{ 'commission.localOnly' | t }}</p><p class="mt-2 text-xs text-muted">{{draft.createdAt | localDate:true}}</p>
+    <h3 class="mt-4 break-words text-lg font-bold">{{draft.discoveryTitle}}</h3>
+    <p class="mt-2 text-sm text-muted">{{draft.size}} cm · {{ 'commission.style.'+draft.style | t }}</p>
+    <p class="mt-4 whitespace-pre-wrap break-words leading-7">{{draft.description}}</p>
+    <p class="mt-4 break-words text-sm text-muted">{{draft.name}} · {{draft.email}}</p>
+    <div class="mt-5 flex flex-wrap gap-4"><button class="secondary" (click)="download(draft)">{{ 'commission.download' | t }}</button><button class="text-sm text-muted underline" (click)="pendingDelete.set(draft.id)">{{ 'commission.delete' | t }}</button></div>
+    @if(pendingDelete()===draft.id){<div class="mt-4 flex flex-wrap items-center gap-4 rounded-xl bg-panel p-4"><span class="text-sm">{{ 'Excluir este registro?' | t }}</span><button class="text-sm text-danger" (click)="orders.remove(draft.id);pendingDelete.set('');success.set(false)">{{ 'Confirmar exclusão' | t }}</button><button class="text-sm" (click)="pendingDelete.set('')">{{ 'Cancelar' | t }}</button></div>}
+   </article>
+  }@empty{<p class="rounded-2xl border border-dashed border-white/20 p-8 leading-7 text-muted">{{ 'commission.emptyDrafts' | t }}</p>}</div>
+  @if(collection.entryCount()){<a routerLink="/diario" class="mt-6 inline-block text-sm text-muted underline">{{ 'commission.oldDiary' | t }}</a>}
+ </section>
+</div>

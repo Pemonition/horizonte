@@ -20,7 +20,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
    if(['es','pt','en'].includes(code)) await page.screenshot({path:path.join(out,'idioma-'+code+'.png')});
    await page.setViewportSize({width:390,height:844});
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow: '+code);
-   await page.locator('nav a[routerlink="/diario"]').click();
+   await page.goto('http://127.0.0.1:4205/diario');
    await page.getByRole('heading',{name:catalog['Seu diário de bordo.'],exact:true}).waitFor();
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'diary overflow: '+code);
    await page.locator('nav a[routerlink="/explorar"]').click();await page.locator('app-explore').waitFor();
@@ -28,7 +28,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
   }
   await select.selectOption('es');await page.reload();await select.waitFor();assert.equal(await select.inputValue(),'es');
   await page.locator('app-discovery-card button').first().click();
-  await page.locator('nav a[routerlink="/diario"]').click();await page.locator('input[name="title"]').fill('Mi primera observación');
+  await page.goto('http://127.0.0.1:4205/diario');await page.locator('input[name="title"]').fill('Mi primera observación');
   await page.locator('select[name="discovery"]').selectOption('language-test');await page.locator('textarea').fill('Este texto personal debe conservarse al cambiar el idioma.');
   await select.selectOption('en');assert.equal(await page.locator('input[name="title"]').inputValue(),'Mi primera observación');
   await page.getByRole('button',{name:'Record observation ↗'}).click();await page.getByRole('heading',{name:'Mi primera observación'}).waitFor();

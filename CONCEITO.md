@@ -23,3 +23,9 @@ Esta é uma base de estudo assistida por IA. Antes de entregar, o aluno deve rev
 ## Escolha pessoal acrescentada pelo aluno
 
 O aluno escolheu destacar as Galáxias Antenas porque a interação entre elas lembra um coração. Essa preferência orientou a substituição da imagem de abertura. Foi utilizada uma fotografia de Kent E. Biggs publicada no APOD em 07/02/2024, com enquadramento e processamento diferentes da imagem enviada por WhatsApp. O pôster de Interestelar continua sendo a referência inicial do conceito exploração.
+
+## Evolução escolhida pelo usuário: da descoberta à encomenda
+
+O usuário preferiu substituir o diário como função principal por um pedido de obra personalizada. A exploração leva à escolha de uma referência e à descrição de uma interpretação artística: imagem, tamanho, estilo, cores e sensações desejadas. A frase de ligação passa a ser: "O pôster inspira exploração; o site permite explorar o cosmos e transformar uma descoberta em uma proposta de obra."
+
+O formulário valida inspiração, nome, e-mail, tamanho, estilo e descrição. Nesta versão, gera somente rascunhos locais baixáveis, sem envio ou promessa comercial. As anotações do diário anterior são preservadas num arquivo acessível.
