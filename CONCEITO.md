@@ -1,31 +1,29 @@
-# Horizonte
+# Horizonte: exploração que vira aprendizado
 
-## Referência escolhida
+## Referência e conceito
 
-Proposta de referência: pôster de **Interestelar (Interstellar, 2014)**, dirigido por Christopher Nolan, na versão que mostra Cooper caminhando em uma paisagem gelada.
+Referência: pôster glacial de **Interestelar (Interstellar, 2014)**, de Christopher Nolan. [Fonte oficial](https://www.paramountpictures.com/movies/interstellar). Cópia de estudo em `docs/referencias/poster.jpg`, fora dos arquivos públicos.
 
-- [Página oficial do filme](https://www.paramountpictures.com/movies/interstellar)
-- [Imagem oficial do pôster](https://public-website-assets.paramountpictures.com/paramount2025/s3fs-public/styles/poster_medium/public/intersteller_en_dvd_800x1200.jpg?itok=YxrRaJN2)
-- Cópia para estudo: `docs/referencias/poster.jpg`. Ela não é incluída nos arquivos públicos da aplicação.
+**Conceito: exploração.** A figura humana pequena diante de um território imenso comunica curiosidade, vulnerabilidade e a decisão de atravessar o conhecido.
 
-**Conceito: exploração.** O astronauta avança por uma superfície desconhecida. A escala da paisagem, a luz fria e o traje de proteção sugerem distância, vulnerabilidade e curiosidade. Interpreto a imagem como o ato de atravessar o limite do familiar. O azul escuro da interface deriva do espaço e das referências do moodboard; a luz fria do pôster aparece no texto e nos contrastes.
+**Frase do projeto:** escolhi esse pôster porque ele fala de exploração; por isso meu site permite descobrir imagens do cosmos, investigar perguntas científicas e planejar o próximo passo de aprendizado.
 
-## Ligação funcional
+## Resposta ao feedback do professor
 
-Escolhi como proposta este pôster porque ele fala de exploração, e por isso o site permite explorar um acervo real, guardar descobertas e registrar observações. A sequência buscar → observar → selecionar → anotar transforma a navegação em uma pequena expedição. A coleção é o atlas pessoal; o diário registra o que cada descoberta provocou. Não é um catálogo do filme nem um planejador de viagens reais.
+A primeira versão enfatizava um fundo espacial escuro e uma galáxia. O usuário relatou que a ligação visual com o pôster estava fraca. Nesta revisão, a abertura assume luz glacial, neblina, relevo monumental, uma figura humana pequena e um título serifado amplo. O painel inferior escuro funciona como área de instrumentos e pesquisa.
 
-## Uso de IA e autoria das decisões
+O nome Horizonte, a composição horizontal, o viajante anônimo, a paisagem gerada e a hierarquia editorial são próprios. O cartaz, o ator, o título do filme e os logotipos não aparecem dentro da aplicação. A inspiração não é uma garantia jurídica de não infração; não usamos identidade do filme para vender mercadorias.
 
-O pedido do usuário à IA foi resumir os requisitos, explicar a atividade e implementar o projeto, nessa ordem. A IA propôs a referência, o nome, o conceito, as funcionalidades e a direção visual, pesquisou fontes, produziu os documentos e implementou o código. Posteriormente, o aluno escolheu destacar as Galáxias Antenas por reconhecer nelas a forma de um coração, conforme registrado abaixo. As demais decisões iniciais continuam identificadas como propostas da IA.
+## Forma e função
 
-Esta é uma base de estudo assistida por IA. Antes de entregar, o aluno deve revisar e adaptar as decisões, registrar aqui o que decidiu pessoalmente, conseguir explicar o código e confirmar a disponibilidade do pôster na lista da turma. A regra do enunciado sobre IA deve ser discutida com o professor se esta extensão de assistência não for aceita.
+Explorar -> observar -> consultar fontes -> escolher um percurso -> gerar um plano. A imagem atrai pelo assombro; as ferramentas levam a uma ação verificável. O catálogo científico é real e tem fontes. Os percursos apresentam perguntas editoriais próprias, sem fingir cursos completos ou certificações. O formulário validado ajuda o visitante a organizar objetivo e interesse; o arquivo baixado inclui um primeiro exercício e uma fonte.
 
-## Escolha pessoal acrescentada pelo aluno
+## Lado A e Lado B
 
-O aluno escolheu destacar as Galáxias Antenas porque a interação entre elas lembra um coração. Essa preferência orientou a substituição da imagem de abertura. Foi utilizada uma fotografia de Kent E. Biggs publicada no APOD em 07/02/2024, com enquadramento e processamento diferentes da imagem enviada por WhatsApp. O pôster de Interestelar continua sendo a referência inicial do conceito exploração.
+Decisão do usuário: priorizar ciência, física, astrofísica, engenharia e fãs de ficção científica. Guías originais, atividades e objetos da marca são hipóteses comerciais. Nenhum produto está anunciado como disponível. Artes autorais, a obra inspirada nas galáxias em forma de coração, NFTs e NFC ficam para um futuro **Lado B**, depois de o Lado A criar valor. As funções anteriores e seus dados não foram apagados, mas saíram da navegação principal.
 
-## Evolução escolhida pelo usuário: da descoberta à encomenda
+## Autoria e cronologia
 
-O usuário preferiu substituir o diário como função principal por um pedido de obra personalizada. A exploração leva à escolha de uma referência e à descrição de uma interpretação artística: imagem, tamanho, estilo, cores e sensações desejadas. A frase de ligação passa a ser: "O pôster inspira exploração; o site permite explorar o cosmos e transformar uma descoberta em uma proposta de obra."
+O usuário escolheu a direção comercial, definiu a prioridade Lado A, trouxe o feedback do professor e anteriormente escolheu o coração das Galáxias Antenas. A IA propôs e implementou a tradução dessas decisões em layout, textos, código e materiais. A ilustração glacial foi gerada com a ferramenta imagegen em 24/09/2026 e é identificada na interface como imagem imaginária, não registro científico.
 
-O formulário valida inspiração, nome, e-mail, tamanho, estilo e descrição. Nesta versão, gera somente rascunhos locais baixáveis, sem envio ou promessa comercial. As anotações do diário anterior são preservadas num arquivo acessível.
+Os PDFs iniciais documentam a primeira direção. `docs/lado-a-direcao.pdf` registra a revisão atual, produzida durante a implementação. Não alegamos que essa revisão foi feita antes do código. O aluno precisa compreender e adaptar a entrega às regras de autoria do professor.

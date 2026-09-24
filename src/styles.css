@@ -1,10 +1,10 @@
 @import "tailwindcss";
 @theme {
  --color-space: #0B1218;
- --color-panel: #14222D;
+ --color-panel: #152029;
  --color-ink: #EEF3F4;
  --color-muted: #A9BAC4;
- --color-accent: #D6EBAB;
+ --color-accent: #C8DCE5;
  --color-danger: #FFAAA2;
  --color-success: #A8DFBF;
  --font-sans: Arial, Helvetica, sans-serif;
@@ -19,13 +19,31 @@
  h2 { @apply text-[28px] font-bold tracking-tight; }
 }
 @layer components {
- .primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-bold text-space transition hover:brightness-110 disabled:opacity-40; }
- .secondary { @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm transition hover:border-accent hover:text-accent; }
+ .primary { @apply inline-flex items-center justify-center gap-2 rounded-sm bg-accent px-6 py-3 font-bold text-space transition hover:brightness-110 disabled:opacity-40; }
+ .secondary { @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 px-5 py-3 text-sm transition hover:border-accent hover:text-accent; }
  .field { @apply min-w-0 w-full rounded-xl border border-white/20 bg-space p-3 text-ink placeholder:text-muted/70; }
  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.22em] text-accent; }
- .nav-link { @apply rounded-full px-4 py-2 text-sm text-muted transition hover:text-ink; }
+ .nav-link { @apply rounded-sm px-4 py-2 text-sm text-muted transition hover:text-ink; }
  .nav-link.active { @apply bg-white/10 text-ink; }
 }
 /* A custom atmospheric gradient complements the Tailwind layout. */
 .orbital { background: radial-gradient(ellipse at 80% 15%, #48788c30, transparent 58%), #0B1218; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+/* Expedition: glacial daylight above, instrument-panel contrast below. */
+.expedition-hero { position:relative; min-height:710px; overflow:hidden; padding:48px; background:#dce5e8 url('/expedition-hero.png') center 58%/cover; color:#172129; }
+.expedition-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#e7eef1ed 0%,#e7eef1ad 43%,transparent 74%); }
+.hero-copy { position:relative; z-index:1; }
+.mission-label { font-size:11px; font-weight:700; letter-spacing:.2em; }
+.hero-wordmark { font-family:Georgia,'Times New Roman',serif; font-size:clamp(42px,8vw,110px); letter-spacing:.08em; line-height:1.3; margin:22px 0 30px; }
+.expedition-hero h1 { max-width:520px; font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:clamp(34px,4vw,52px); letter-spacing:-.025em; }
+.hero-intro { max-width:450px; margin-top:22px; line-height:1.8; font-size:16px; }
+.expedition-hero .primary { background:#172129; color:#eef3f4; }
+.expedition-hero .secondary { border-color:#17212980; color:#172129; background:#eef3f4b8; }
+.hero-caption { position:absolute; bottom:18px; right:20px; left:20px; text-align:right; font-size:10px; color:white; text-shadow:0 1px 4px black; }
+.mission-strip { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; padding:40px 0; }
+.mission-card { display:flex; flex-direction:column; padding:28px; border:1px solid #ffffff25; background:#152029; }
+.mission-card.selected-product { border-color:#c8dce5; }
+.product-art { display:flex; position:relative; overflow:hidden; align-items:center; justify-content:center; height:170px; background:linear-gradient(140deg,#dce5e8,#6c8c9c); color:#152029; font-size:12px; letter-spacing:.18em; }
+.product-art>span:last-child { position:relative; background:#e8eef1d9; padding:8px; }
+.orbit-ring { position:absolute; width:190px; height:190px; border:1px solid #15202980; border-radius:50%; transform:rotate(-35deg) scaleY(.5); box-shadow:0 0 0 24px #ffffff1a,0 0 0 48px #ffffff1a; }
+@media(max-width:640px){.expedition-hero{padding:28px 22px;min-height:740px;background-position:82% bottom}.expedition-hero::before{background:linear-gradient(#e7eef1fa,#e7eef1db 52%,#e7eef110 80%)}.hero-wordmark{font-size:clamp(27px,8.2vw,48px);letter-spacing:.035em}.hero-intro{font-size:15px}.hero-caption{font-size:9px}.mission-card{padding:22px}}

@@ -16,3 +16,7 @@ O usuário escolheu as Galáxias Antenas, cuja forma lembra um coração, como i
 Somente planejamento. Nenhuma obra foi autenticada, nenhum NFT foi emitido, nenhuma carteira foi conectada e nenhuma venda está ativa. O foco atual permanece no site Horizonte: exploração, coleção e diário.
 
 A fotografia usada como referência não é uma obra da Pemonition. A versão de Kent E. Biggs publicada no APOD possui copyright do fotógrafo. Eventuais reproduções ou adaptações comerciais precisam de avaliação dos direitos aplicáveis; a ideia de pintar uma obra inspirada no cosmos não transfere direitos sobre a fotografia.
+
+## Prioridade atual: Lado A
+
+Em 24/09/2026, o usuário decidiu adiar artes, NFTs e NFC para um Lado B futuro, depois de validar a proposta científica e educacional do Horizonte. Este documento é planejamento, não uma oferta ativa. O coração das Galáxias Antenas continua sendo a inspiração da primeira obra futura.

@@ -17,3 +17,9 @@
 ## Fotografia de abertura
 
 [The Heart Shaped Antennae Galaxies — APOD, 07/02/2024](https://apod.nasa.gov/apod/ap240207.html). Imagem e copyright: Kent E. Biggs. [Autor](https://www.kentbiggs.com/images/galaxies/N4038.htm). [Alta resolução](https://apod.nasa.gov/apod/image/2402/Antennae_Biggs_3840.jpg). Mesmas galáxias da referência enviada pelo usuário; não foi confirmado que seja a mesma fotografia original. Uso comercial não autorizado nesta tarefa.
+
+## Direção Lado A - 24/09/2026
+
+A abertura atual usa `public/expedition-hero.png`, ilustração original de expedição glacial gerada com imagegen. Não é uma foto NASA. A imagem anterior de Kent E. Biggs permanece histórica e não é usada na abertura comercial. A referência formal continua sendo o pôster oficial glacial de Interestelar, fora do aplicativo.
+
+Recursos educacionais externos: https://www.nasa.gov/learning-resources/ ; https://science.nasa.gov/learn/ ; https://www.nasa.gov/ebooks/ . Recursos gratuitos oficiais são apresentados separadamente dos produtos próprios em desenvolvimento.

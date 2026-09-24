@@ -1,113 +1,67 @@
-# Horizonte
+# Horizonte - Lado A
 
-SPA Angular para explorar imagens reais da NASA, salvar descobertas e preparar pedidos de obras personalizadas. Projeto de estudo baseado no enunciado **Da capa para a tela**.
+SPA Angular de exploração científica, engenharia e cultura de ficção científica. Inspirada no conceito de exploração do pôster glacial de Interestelar, sem incluir o cartaz na aplicação.
 
-## 1. Resumo do pedido
-
-Partir de uma capa de álbum ou pôster para criar um conceito, um moodboard, uma identidade visual e uma aplicação. A capa inspira a experiência, mas não aparece dentro do aplicativo. A entrega prevê GitHub, README, CONCEITO.md, moodboard e identidade visual em PDF ou imagem, e a aplicação funcionando.
-
-Avaliação: conceito e função 20%; moodboard 15%; identidade 15%; requisitos técnicos 25%; signals 15%; acabamento e apresentação 10%. O documento informa que usar `*ngIf`/`*ngFor` ou mostrar a capa na aplicação zera o critério técnico.
-
-## 2. Explicação da atividade
-
-O objetivo não é copiar o pôster: é transformar sua ideia em uma ação. Aqui, exploração vira busca de imagens, seleção de descobertas e preparação de um pedido criativo. O moodboard reúne referências para justificar atmosfera e forma. A identidade fecha as decisões. Os esboços demonstram essas escolhas antes das telas finais.
-
-`signal` guarda o que pode mudar por uma ação, como o texto de um formulário ou uma coleção. `computed` deriva o que já pode ser calculado, como contagens, filtros e validade; assim não é preciso sincronizar dois estados manualmente. `input()` recebe dados no cartão, e `output()` comunica a intenção de salvar ao pai. O serviço usa `inject(HttpClient)` para concentrar as chamadas HTTP.
-
-## 3. Executar a implementação
-
-Requisitos: Node.js 24.15 ou superior da linha 24, npm e internet para instalar pacotes e consumir a NASA. Desenvolvido com Node 24.21 e Angular 22.
+## Rodar
 
 ```powershell
-git clone https://github.com/Pemonition/horizonte.git
-cd horizonte
 npm ci
-npm start
+npm start -- --host 127.0.0.1 --port 4205
 ```
 
-Abra http://localhost:4200. Em uma instalação já pronta, basta `npm start`.
+Abra http://127.0.0.1:4205. Node 24.15+ na linha 24. Build: `npm run build`. Testes: `npm test -- --watch=false`. Saída: `dist/spa_http/browser`; hospedagem deve redirecionar rotas da SPA a index.html.
 
-```powershell
-npm run build
-npm test -- --watch=false
-```
+## Experiência atual
 
-Build estático: `dist/spa_http/browser`. O servidor de produção deve redirecionar caminhos desconhecidos para `index.html`, permitindo abrir detalhes diretamente.
+- `/explorar`: abertura glacial original, busca real na NASA, estados de carregamento/erro e cartões salváveis.
+- `/descoberta/:id`: imagem, descrição original e fonte NASA.
+- `/colecao`: coleção local filtrável.
+- `/aprender`: três percursos gratuitos, exercícios editoriais e links oficiais externos em inglês.
+- `/produtos`: conceitos de guias próprios, kits e objetos Horizonte; formulário validado que gera um plano pessoal em TXT.
+- `/encomenda`: redireciona a Produtos. O formulário artístico anterior permanece apenas no arquivo `/arquivo/encomenda`; dados locais existentes não foram removidos.
+- `/diario`: arquivo das anotações anteriores, fora do menu principal.
+- Outras rotas: 404.
 
-## Rotas e uso
+Interface em espanhol, português, inglês, holandês, alemão, italiano e francês. Espanhol, português e inglês são prioritários no seletor. Conteúdo da NASA permanece no idioma original, identificado na tela.
 
-- `/explorar`: busca real na NASA, com sugestões e até 24 resultados. Use termos em inglês.
-- `/descoberta/:id`: detalhe consultado diretamente na API, inclusive ao recarregar a página.
-- `/colecao`: imagens salvas, com filtro local por título ou centro.
-- `/encomenda`: formulário de pedido de obra personalizada, prévia, rascunhos locais, download e exclusão confirmada.
-- `/diario`: arquivo do diário anterior, preservado para acesso às anotações existentes.
-- Qualquer outro endereço: página 404 no tema.
+## Limites comerciais reais
 
-Use o botão de encomenda nos detalhes para salvar a imagem como inspiração e abrir o formulário já preenchido com ela. Também é possível selecionar uma imagem da coleção.
+Os produtos são propostas em desenvolvimento, sem preço, estoque, checkout ou promessa de entrega. O plano é gerado no navegador e baixado pelo visitante; não coleta contatos, não envia leads, não inscreve em lista de espera e não realiza reservas. Campos: nome/apelido 2–80 caracteres, objetivo 20–600, tema e produto de listas fechadas. `computed` controla validade e recomendação; espaços externos não contam. Não existe backend comercial.
 
-Nome (2–80 caracteres), e-mail válido, tamanho (30x40, 50x70 ou 70x100 cm), estilo e descrição (20–1500 caracteres) são obrigatórios. A prévia acompanha as escolhas. O botão salva um rascunho local que pode ser baixado como texto ou excluído. **Não há envio ao artista, orçamento, pagamento ou reserva.**
+Para gerar receita: produzir e revisar o primeiro guia original, validar interesse com público real, definir preço e entrega; conectar captação consentida e pagamento/entrega com provedor escolhido. Métricas futuras: acesso aos percursos, interesse consentido, conversão paga e reembolso. Não há analytics ou rastreamento implementados. Recursos gratuitos NASA são fontes abertas de aprendizagem, não nossos produtos pagos. Ver `docs/MODELO-DE-NEGOCIO.md`.
 
-Coleção, rascunhos e anotações antigas persistem em `localStorage`, apenas neste navegador e origem. Ao salvar, nome e e-mail também ficam nesse navegador, conforme o aviso no formulário. Não há conta, sincronização entre dispositivos ou backend próprio. Se o navegador bloquear a gravação, a página avisa para baixar o rascunho antes de sair. Os dados de contato não são enviados à NASA.
-
-## Mapa dos requisitos
+## Requisitos técnicos preservados
 
 | Requisito | Implementação |
 |---|---|
-| 3 rotas, menu ativo, parâmetro, `**` | `src/app/routes.ts`, `app.ts` |
-| Dois componentes com `input()` | `DiscoveryCard` e `Stat`, em `components.ts` |
-| Comunicação com `output()` | `DiscoveryCard.toggle`, tratado nas páginas |
-| `@if`, `@for`, `track`, `@empty` | Explorar, Coleção e Encomenda |
-| Estado em signals | Serviço, store e componentes |
-| Pelo menos 3 derivados reais | `savedIds`, `savedCount`, `entryCount`, `observedCount`, `filtered`, `valid` |
-| Serviço com `inject()` e API pública | `nasa.service.ts`, NASA Image and Video Library |
-| Carregando, erro, repetição da tentativa | Explorar e Detalhes; timeout de 20 segundos |
-| Formulário validado | Template-driven (`FormsModule`/`ngModel`) com estado em signals. Pedido: inspiração, nome, e-mail, tamanho, estilo e descrição validados |
-| Tailwind como base | PostCSS + Tailwind 4; utilitários em todos os templates |
-| Responsivo | Grade de 1/2/3 colunas, navegação com quebra, formulário adaptável |
+| Rotas, menu ativo, detalhe por parâmetro, 404 | routes.ts e app.ts |
+| Dois componentes com input() | DiscoveryCard e Stat |
+| output() | DiscoveryCard.toggle comunica salvamento |
+| @if, @for, track, @empty | Explorar, Coleção e formulários |
+| Signals e derivados | Consulta, coleção, filtro, contagens, validade e recomendação |
+| Serviço com inject e HttpClient | NasaService e API pública NASA |
+| Carregamento, erro, nova tentativa | Explorar e Detalhes |
+| Formulário validado e botão desabilitado | Products em side-a.ts; validação também no submit |
+| Responsividade / Tailwind | Utilitários, grades e estilos atmosféricos complementares |
 
-## Materiais de criação
+## Materiais e autoria
 
-- [Conceito e transparência sobre IA](CONCEITO.md)
-- [Moodboard: 12 referências](docs/moodboard.pdf)
-- [Identidade visual](docs/identidade-visual.pdf)
-- [Duas telas esboçadas](docs/esbocos.pdf)
-- [Fontes e créditos](docs/REFERENCIAS.md)
+- `CONCEITO.md`: ligação entre referência, forma e função, com transparência sobre IA.
+- `docs/moodboard.pdf`, `docs/identidade-visual.pdf`, `docs/esbocos.pdf`: materiais iniciais da primeira versão, preservados como histórico.
+- `docs/lado-a-direcao.pdf`: revisão atual da direção visual, do percurso e das composições. Feita durante esta iteração, não apresentada como esboço anterior ao código original.
+- `docs/REFERENCIAS.md`: fontes e créditos das referências.
+- `docs/PEMONITION.md`: ideias futuras do Lado B (artes/NFTs), fora da prioridade atual.
 
-As imagens NASA são referências reais; as duas interfaces são capturas dos sites NASA e ESA. A imagem de abertura mostra as Galáxias Antenas, fotografadas por Kent E. Biggs e publicadas no APOD/NASA em 07/02/2024. O arquivo de alta resolução está disponível ao clicar na fotografia. A imagem tem copyright do fotógrafo; a publicação no APOD não constitui licença comercial. O projeto não é afiliado à NASA, ESA ou ao filme.
+A abertura usa ilustração original gerada com IA, identificada no site, em `public/expedition-hero.png`. Não é uma fotografia de missão real. Sem atores, logotipos ou personagens do filme. A imagem de Kent E. Biggs foi retirada da abertura comercial; permanece como arquivo histórico com seu crédito e sem licença comercial presumida.
 
-## Roteiro de apresentação de 5 minutos
+Coleção e dados antigos persistem apenas no localStorage do navegador. O novo plano não é persistido; o visitante pode baixá-lo antes de sair. Alterar idioma mantém os campos enquanto a página continua aberta. Não há afiliação à NASA ou aos estúdios do filme.
 
-1. 0:00–0:40 — mostrar o pôster fora do aplicativo e explicar exploração.
-2. 0:40–1:20 — mostrar o moodboard, comentar escala e luz.
-3. 1:20–2:00 — explicar paleta, contraste, tipografia e esboços.
-4. 2:00–3:40 — buscar, abrir um detalhe e preparar um pedido com a imagem selecionada.
-5. 3:40–5:00 — abrir `commission.store.ts` e `commission.ts`; explicar por que contagens e validade são `computed`, e como atualizações imutáveis funcionam.
+## Apresentação
 
-## Pendências externas à implementação
+1. Mostrar o pôster fora do aplicativo; explicar exploração e escala humana.
+2. Comparar luz glacial, título serifado e figura pequena com a nova direção.
+3. Explorar o acervo, abrir detalhes e salvar uma descoberta.
+4. Abrir Aprender e mostrar o percurso de perguntas e fontes.
+5. Preencher Produtos, demonstrar botão inválido/válido e baixar o plano; explicar a diferença entre protótipo comercial e operação de vendas.
 
-A referência é uma proposta da IA: confirmar disponibilidade na turma e revisar escolhas e regras de autoria com o professor. Repositório privado: https://github.com/Pemonition/horizonte. Dependências e arquivos temporários ficam fora do versionamento. O envio ao GitHub não publica uma hospedagem do aplicativo.
-
-## Fontes técnicas
-
-- [NASA API](https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf)
-- [Angular signals](https://angular.dev/guide/signals)
-- [Angular inputs](https://angular.dev/guide/signals/inputs)
-- [Angular e Tailwind](https://angular.dev/guide/tailwind)
-
-## Idiomas
-
-Interface em espanhol, português, inglês, holandês, alemão, italiano e francês. O seletor prioriza espanhol, português e inglês nessa ordem. A preferência é salva no navegador; no primeiro acesso, usa um idioma compatível do navegador ou português como padrão.
-
-Navegação, títulos de página, textos acessíveis, formulários, validação, mensagens de erro e datas acompanham o idioma. Títulos e descrições da NASA permanecem em inglês; textos pessoais do diário não são traduzidos ou modificados. As rotas mantêm os mesmos endereços em todos os idiomas.
-
-Os catálogos ficam em `src/app/i18n/*.json`, com catálogos completos por idioma. `src/app/i18n.ts` concentra a seleção com signal, interpolação, datas com Intl e títulos de rota. Para corrigir traduções, edite o JSON correspondente; mantenha as mesmas chaves e parâmetros entre idiomas. Os quatro idiomas adicionais merecem revisão editorial por falantes nativos antes de uma divulgação comercial.
-
-## Pemonition: próxima etapa
-
-A ideia da primeira obra física inspirada nas Galáxias Antenas e seus possíveis certificados/NFTs está registrada em [PEMONITION.md](docs/PEMONITION.md). É planejamento separado; não há pagamentos, carteiras ou emissão de tokens implementados.
-
-## Evolução do formulário
-
-O pedido criativo substitui o diário no menu principal. A ligação conceitual agora é explorar → escolher uma inspiração → descrever uma obra. O diário antigo continua em `/diario`, com link de arquivo na página de encomenda quando existem anotações. Não houve migração destrutiva dos dados.
-
-Os PDFs de identidade, moodboard e esboços registram a concepção inicial; o esboço do diário é histórico. A nova tela é documentada nas capturas `docs/verificacao/encomenda-desktop.png` e `encomenda-mobile.png`. A identidade visual original continua aplicada.
+Repositório privado: https://github.com/Pemonition/horizonte. GitHub não equivale a hospedagem pública. O aluno deve revisar e explicar o código e as decisões conforme as regras do professor.

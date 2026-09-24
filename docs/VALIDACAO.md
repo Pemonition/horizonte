@@ -28,3 +28,12 @@
 Evidência automatizada em `verificacao/resultado.json`. `desktop.png` mostra dados reais; `desktop-test.png`, `diario.png` e `mobile.png` são capturas dos testes com fixture. Os testes não escrevem no perfil do navegador do usuário.
 
 Comandos portáveis para build e testes unitários estão no README. Os scripts auxiliares de captura usam o Playwright do runtime local do Codex; em outra máquina, adapte o import para uma instalação de `playwright` e instale o navegador correspondente. Eles não são necessários para executar a aplicação.
+
+## Lado A - 24/09/2026
+
+- Build de produção aprovado: 476,27 kB iniciais (117,13 kB estimados em transferência), incluindo o ajuste final de enquadramento mobile.
+- 19 testes unitários aprovados: API/coleção, sete catálogos de tradução, arquivo de encomendas e limites do novo plano.
+- `scripts/verify-side-a.cjs`: sete idiomas, três rotas a 390 px sem overflow, troca de idioma preservando campos, redirecionamento de /encomenda, formulário inválido bloqueado, recomendação por tema e conteúdo do download verificado; sem erros de runtime.
+- Teste de interface usa respostas NASA controladas; não comprova disponibilidade do serviço externo. A consulta NASA existente não foi modificada.
+- Revisão visual da abertura desktop/mobile, catálogo e PDF de direção. Ilustração de abertura original gerada por IA.
+- Propostas comerciais ainda indisponíveis; sem checkout, envio de leads ou captação real. O plano é exclusivamente local.

@@ -6,8 +6,8 @@ const fs=require('node:fs');const path=require('node:path');const assert=require
   const context=await browser.newContext({locale:'es',viewport:{width:1440,height:1100},acceptDownloads:true});const page=await context.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));
   const base='http://127.0.0.1:4205';const out=path.join(__dirname,'../docs/verificacao');
   await page.route('https://images-api.nasa.gov/**',route=>route.fulfill({json:{collection:{items:[{data:[{nasa_id:'cosmos-test',title:'Cosmic inspiration',description:'Original NASA description',date_created:'2026-01-01',center:'NASA'}],links:[{href:'https://images-assets.nasa.gov/image/art002e009280b/art002e009280b~large.jpg',rel:'preview'}]}]}}}));
-  await page.goto(base+'/encomenda');await page.getByRole('link',{name:'Encontrar un descubrimiento'}).waitFor();assert.equal(await page.locator('form').count(),0);
-  await page.goto(base+'/descoberta/cosmos-test');await page.getByRole('link',{name:'Crear pedido inspirado en esta imagen ↗'}).click();await page.locator('form').waitFor();
+  await page.goto(base+'/arquivo/encomenda');await page.getByRole('link',{name:'Encontrar un descubrimiento'}).waitFor();assert.equal(await page.locator('form').count(),0);
+  await page.goto(base+'/descoberta/cosmos-test');await page.locator('app-detail article button.primary').click();await page.goto(base+'/arquivo/encomenda?inspiracao=cosmos-test');await page.locator('form').waitFor();
   assert.equal(await page.locator('select[name="inspiration"]').inputValue(),'cosmos-test');
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('horizonte.saved')).length),1);
   const submit=page.locator('button[type="submit"]');const save=page.getByRole('button',{name:'Guardar borrador del pedido'});assert(await save.isDisabled());

@@ -16,7 +16,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');const pat
    await page.getByRole('link',{name:catalog['Explorar'],exact:true}).waitFor();
    await page.waitForFunction(expected=>document.title===expected,catalog['Explorar']+' · Horizonte');
    assert.equal(await page.locator('html').getAttribute('lang'),{pt:'pt-BR',nl:'nl-NL',de:'de-DE',it:'it-IT',fr:'fr-FR'}[code]??code);
-   assert((await page.locator('h1').innerText()).includes(catalog['O universo é maior']));
+   assert((await page.locator('h1').innerText()).includes(catalog['a.head']));
    if(['es','pt','en'].includes(code)) await page.screenshot({path:path.join(out,'idioma-'+code+'.png')});
    await page.setViewportSize({width:390,height:844});
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow: '+code);
