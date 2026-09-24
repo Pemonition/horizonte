@@ -1,7 +1,7 @@
 const {chromium}=require('C:/Users/hugoj/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
 (async()=>{
- const browser=await chromium.launch({channel:'msedge',headless:true});const context=await browser.newContext({viewport:{width:1440,height:1050}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const browser=await chromium.launch({channel:'msedge',headless:true});const context=await browser.newContext({locale:'pt-BR',viewport:{width:1440,height:1050}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const base='http://127.0.0.1:4205';const out=path.join(__dirname,'../docs/verificacao');fs.mkdirSync(out,{recursive:true});
  await page.route('https://images-api.nasa.gov/**',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({collection:{items:[{data:[{nasa_id:'test-nebula',title:'Nebula - registro de teste',description:'Deterministic browser test fixture.',date_created:'2024-01-01',center:'NASA'}],links:[{href:'https://images-assets.nasa.gov/image/art002e009280b/art002e009280b~large.jpg',rel:'preview'}]}]}})}));
  await page.goto(base);await page.locator('app-discovery-card').first().waitFor({timeout:45000});

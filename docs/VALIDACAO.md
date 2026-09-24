@@ -1,5 +1,16 @@
 # Validação - 23/09/2026
 
+## Atualização multilíngue
+
+- Comparação com `origin/main`: o commit remoto `c9eba8d96989a5fc7413cf29b140adbd8f26c639` já estava presente localmente. Não houve alterações remotas divergentes ou conflitos; a interface multilíngue foi integrada sobre essa base.
+- 12 testes unitários aprovados, incluindo paridade das 109 chaves nos sete catálogos, parâmetros, troca e persistência de idioma, datas e armazenamento indisponível.
+- Navegador: espanhol, português, inglês, holandês, alemão, italiano e francês aprovados na navegação e no layout de 390 px; idioma e título do documento atualizados; preferência preservada após recarga.
+- Formulário em espanhol preservado ao trocar para inglês; observação salva e mensagem de sucesso traduzida ao trocar para português. Conteúdo original da NASA preservado em inglês. Página 404 traduzida.
+- Evidência: `verificacao/idiomas.json`; capturas `idioma-es.png`, `idioma-pt.png` e `idioma-en.png` usam dados controlados de teste.
+- As traduções adicionais ainda podem receber revisão editorial por falantes nativos. Nenhuma tradução automática é aplicada às anotações pessoais ou descrições da NASA.
+
+## Verificação inicial
+
 - Build de produção aprovado: 370 kB de JavaScript/CSS inicial, estimativa comprimida de 96,45 kB.
 - 6 testes automatizados aprovados em `src/app/behavior.spec.ts`.
 - 13 verificações de navegador aprovadas, sem erros JavaScript de página: navegação, menu ativo, coleção, filtro, detalhe com recarga, formulário, persistência, exclusão, largura móvel de 390 px sem transbordamento horizontal, página 404, falha e nova tentativa da API, busca vazia e detalhe inexistente.

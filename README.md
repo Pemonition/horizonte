@@ -19,7 +19,8 @@ O objetivo não é copiar o pôster: é transformar sua ideia em uma ação. Aqu
 Requisitos: Node.js 24.15 ou superior da linha 24, npm e internet para instalar pacotes e consumir a NASA. Desenvolvido com Node 24.21 e Angular 22.
 
 ```powershell
-cd "C:\Users\hugoj\Desktop\Curso CSharp\projeto-angular-01"
+git clone https://github.com/Pemonition/horizonte.git
+cd horizonte
 npm ci
 npm start
 ```
@@ -79,7 +80,7 @@ As imagens NASA são referências reais; as duas interfaces são capturas dos si
 
 ## Pendências externas à implementação
 
-A referência é uma proposta da IA: confirmar disponibilidade na turma e revisar escolhas e regras de autoria com o professor. O repositório remoto no GitHub não é criado automaticamente; é necessário escolher conta, nome e visibilidade. O projeto está pronto para versionamento, com dependências e arquivos temporários ignorados.
+A referência é uma proposta da IA: confirmar disponibilidade na turma e revisar escolhas e regras de autoria com o professor. Repositório privado: https://github.com/Pemonition/horizonte. Dependências e arquivos temporários ficam fora do versionamento. O envio ao GitHub não publica uma hospedagem do aplicativo.
 
 ## Fontes técnicas
 
@@ -87,3 +88,15 @@ A referência é uma proposta da IA: confirmar disponibilidade na turma e revisa
 - [Angular signals](https://angular.dev/guide/signals)
 - [Angular inputs](https://angular.dev/guide/signals/inputs)
 - [Angular e Tailwind](https://angular.dev/guide/tailwind)
+
+## Idiomas
+
+Interface em espanhol, português, inglês, holandês, alemão, italiano e francês. O seletor prioriza espanhol, português e inglês nessa ordem. A preferência é salva no navegador; no primeiro acesso, usa um idioma compatível do navegador ou português como padrão.
+
+Navegação, títulos de página, textos acessíveis, formulários, validação, mensagens de erro e datas acompanham o idioma. Títulos e descrições da NASA permanecem em inglês; textos pessoais do diário não são traduzidos ou modificados. As rotas mantêm os mesmos endereços em todos os idiomas.
+
+Os catálogos ficam em `src/app/i18n/*.json`, com 109 entradas por idioma. `src/app/i18n.ts` concentra a seleção com signal, interpolação, datas com Intl e títulos de rota. Para corrigir traduções, edite o JSON correspondente; mantenha as mesmas chaves e parâmetros entre idiomas. Os quatro idiomas adicionais merecem revisão editorial por falantes nativos antes de uma divulgação comercial.
+
+## Pemonition: próxima etapa
+
+A ideia da primeira obra física inspirada nas Galáxias Antenas e seus possíveis certificados/NFTs está registrada em [PEMONITION.md](docs/PEMONITION.md). É planejamento separado; não há pagamentos, carteiras ou emissão de tokens implementados.
