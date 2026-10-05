@@ -1,5 +1,4 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { I18n, TranslatePipe } from './i18n';
 
 export const PATHS = [
@@ -15,14 +14,7 @@ export const PRODUCTS = [
 export function validPlan(name:string,goal:string,topic:string,product:string):boolean {
  return name.trim().length>=2 && name.trim().length<=80 && goal.trim().length>=20 && goal.trim().length<=600 && PATHS.some(p=>p.id===topic) && PRODUCTS.some(p=>p.id===product);
 }
-@Component({imports:[TranslatePipe,RouterLink],template:`
- <p class="eyebrow">{{ 'a.tag' | t }}</p><h1 class="mt-5">{{ 'a.routes' | t }}</h1>
- <p class="mt-6 text-muted">{{ 'a.free' | t }}</p>
- <div class="mt-10 grid gap-6 lg:grid-cols-3">@for(path of paths;track path.id;let index=$index){
- <article class="mission-card"><p class="eyebrow">0{{index+1}} / HORIZONTE</p><h2 class="mt-8">{{path.title | t}}</h2><p class="mt-5 grow leading-8 text-muted">{{path.text | t}}</p><a [href]="path.url" target="_blank" rel="noopener noreferrer" class="secondary mt-8">{{ 'a.source' | t }} ↗</a></article>}
- </div><div class="mission-strip"><a routerLink="/explorar" class="primary">{{ 'Começar a explorar' | t }} ↗</a><a routerLink="/produtos" class="secondary">{{ 'a.form' | t }} ↗</a></div>
-`})
-export class Learn {readonly paths=PATHS;}
+export { Learn } from './learn';
 @Component({imports:[TranslatePipe],template:`
  <p class="eyebrow">{{ 'a.tag' | t }}</p><h1 class="mt-5">{{ 'a.shopHead' | t }}</h1><p class="mt-6 max-w-3xl text-lg leading-8 text-muted">{{ 'a.shopIntro' | t }}</p>
  <div class="mt-10 grid gap-6 lg:grid-cols-3">@for(product of products;track product.id){<article class="mission-card" [class.selected-product]="selected()===product.id"><div class="product-art" aria-hidden="true"><span class="orbit-ring"></span><span>{{product.mark}}</span></div><p class="eyebrow mt-6">{{ 'a.planned' | t }}</p><h2 class="mt-3">{{product.title | t}}</h2><p class="mt-4 grow leading-7 text-muted">{{product.text | t}}</p><button type="button" class="secondary mt-6" [attr.aria-pressed]="selected()===product.id" (click)="selected.set(product.id);done.set(false)">{{ 'a.choose' | t }} <span aria-hidden="true">{{selected()===product.id?'✓':'↗'}}</span></button></article>}</div>

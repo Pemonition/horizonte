@@ -64,4 +64,22 @@ Coleção e dados antigos persistem apenas no localStorage do navegador. O novo 
 4. Abrir Aprender e mostrar o percurso de perguntas e fontes.
 5. Preencher Produtos, demonstrar botão inválido/válido e baixar o plano; explicar a diferença entre protótipo comercial e operação de vendas.
 
-Repositório privado: https://github.com/Pemonition/horizonte. GitHub não equivale a hospedagem pública. O aluno deve revisar e explicar o código e as decisões conforme as regras do professor.
+Repositório: https://github.com/Pemonition/horizonte. GitHub não equivale a hospedagem pública. O aluno deve revisar e explicar o código e as decisões conforme as regras do professor.
+
+## Revisão: aprendizado dentro do Horizonte
+
+A página `/aprender` agora contém a missão interativa sobre anos-luz (explicação própria, controle de distância, desafio com feedback e conclusão). Referências externas aparecem como fontes, após o conteúdo. Progresso vale apenas para a visita à página. O título da abertura tem faixa de inversão claro/escuro com bordas difusas, inspirada na composição do cartaz. Pesquisa de APIs, referência Kurzgesagt e pendência de línguas indígenas: `docs/CONTEUDO-E-APIS.md`.
+
+## Entrega para o professor — 05/10/2026
+
+- [Conceito e autoria](CONCEITO.md)
+- [Moodboard inicial](docs/moodboard.pdf)
+- [Identidade visual inicial](docs/identidade-visual.pdf)
+- [Esboços iniciais](docs/esbocos.pdf)
+- [Direção visual atualizada](docs/lado-a-direcao.pdf)
+- [Exercícios e aula JWT](https://github.com/Pemonition/primeiro_angular_d2b)
+- [Roteiro de apresentação](docs/ENTREGA.md)
+
+Referências técnicas da turma: [angular_tailwind](https://github.com/rannyer/angular_tailwind) e [spa_http](https://github.com/rannyer/spa_http). O projeto usa Tailwind com `@tailwindcss/postcss` e `@import "tailwindcss"`, como a referência, além de estilos próprios. Não foi substituído pelo exemplo do professor.
+
+Verificação desta entrega: compilação de produção aprovada e 19 testes aprovados. O teste usa um worker por vez para evitar timeout de inicialização no Windows. Disponibilidade da API NASA depende do serviço externo.

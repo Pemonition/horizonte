@@ -37,3 +37,11 @@ Comandos portáveis para build e testes unitários estão no README. Os scripts 
 - Teste de interface usa respostas NASA controladas; não comprova disponibilidade do serviço externo. A consulta NASA existente não foi modificada.
 - Revisão visual da abertura desktop/mobile, catálogo e PDF de direção. Ilustração de abertura original gerada por IA.
 - Propostas comerciais ainda indisponíveis; sem checkout, envio de leads ou captação real. O plano é exclusivamente local.
+
+## Missão interativa e título - revisão de setembro de 2026
+
+- Build aprovado (493,97 kB iniciais) e 19 testes unitários aprovados.
+- `scripts/verify-learn.cjs`: sete idiomas, controle de distância, feedback incorreto/correto, bloqueio após conclusão, reinício, layout a 390 px e ausência de erros de runtime.
+- Fonte científica identificada ao final da explicação; nenhum redirecionamento obrigatório para aprender.
+- Revisão visual do título com faixa difusa e inversão de cor. Progresso da atividade somente durante a visita à página.
+- Pesquisa documental de APIs em CONTEUDO-E-APIS.md; novas integrações não ativadas. Línguas indígenas aguardam definição e revisão.
