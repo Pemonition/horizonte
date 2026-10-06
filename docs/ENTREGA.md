@@ -4,7 +4,7 @@ Repositório: https://github.com/Pemonition/horizonte
 
 ## Rodar na apresentação
 
-Na raiz, execute `npm ci` e `npm start -- --host 127.0.0.1 --port 4205`. Abra http://127.0.0.1:4205. O GitHub contém o código; não há hospedagem pública criada nesta entrega.
+Na raiz, execute `npm ci` e `npm start -- --host 127.0.0.1 --port 4205`. Abra http://127.0.0.1:4205. O GitHub contém o código. O frontend publicado está em https://horizonte-delta.vercel.app/; a execução local é uma alternativa para a demonstração.
 
 ## Roteiro de cinco minutos
 

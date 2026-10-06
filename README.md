@@ -16,7 +16,7 @@ Abra http://127.0.0.1:4205. Node 24.15+ na linha 24. Build: `npm run build`. Tes
 - `/explorar`: abertura glacial original, busca real na NASA, estados de carregamento/erro e cartões salváveis.
 - `/descoberta/:id`: imagem, descrição original e fonte NASA.
 - `/colecao`: coleção local filtrável.
-- `/aprender`: três percursos gratuitos, exercícios editoriais e links oficiais externos em inglês.
+- `/aprender`: missão interativa sobre anos-luz, três caminhos de estudo com atividades sugeridas e links oficiais externos em inglês.
 - `/produtos`: conceitos de guias próprios, kits e objetos Horizonte; formulário validado que gera um plano pessoal em TXT.
 - `/encomenda`: redireciona a Produtos. O formulário artístico anterior permanece apenas no arquivo `/arquivo/encomenda`; dados locais existentes não foram removidos.
 - `/diario`: arquivo das anotações anteriores, fora do menu principal.
@@ -64,7 +64,7 @@ Coleção e dados antigos persistem apenas no localStorage do navegador. O novo 
 4. Abrir Aprender e mostrar o percurso de perguntas e fontes.
 5. Preencher Produtos, demonstrar botão inválido/válido e baixar o plano; explicar a diferença entre protótipo comercial e operação de vendas.
 
-Repositório: https://github.com/Pemonition/horizonte. GitHub não equivale a hospedagem pública. O aluno deve revisar e explicar o código e as decisões conforme as regras do professor.
+Repositório: https://github.com/Pemonition/horizonte. Frontend publicado: https://horizonte-delta.vercel.app/. GitHub contém o código-fonte. O aluno deve revisar e explicar o código e as decisões conforme as regras do professor.
 
 ## Revisão: aprendizado dentro do Horizonte
 
@@ -83,3 +83,7 @@ A página `/aprender` agora contém a missão interativa sobre anos-luz (explica
 Referências técnicas da turma: [angular_tailwind](https://github.com/rannyer/angular_tailwind) e [spa_http](https://github.com/rannyer/spa_http). O projeto usa Tailwind com `@tailwindcss/postcss` e `@import "tailwindcss"`, como a referência, além de estilos próprios. Não foi substituído pelo exemplo do professor.
 
 Verificação desta entrega: compilação de produção aprovada e 19 testes aprovados. O teste usa um worker por vez para evitar timeout de inicialização no Windows. Disponibilidade da API NASA depende do serviço externo.
+
+## Melhorias para apresentação — 06/10/2026
+
+Aprender apresenta três caminhos de estudo após a missão. O formulário mostra orientações junto aos campos e sinaliza valores inválidos com aria-invalid. O Lado B permanece uma ideia de evolução; não foi ativado nesta etapa.
